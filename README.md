@@ -51,7 +51,7 @@ Build Docker from file
 docker build -f hack/Dockerfile . -t urlshort
 ```
 
-Run 
+Run locally
 ```bash
 docker run -p 8000:8080 urlshort
 ```
@@ -65,5 +65,13 @@ docker inspect 480cf1308d0d | grep "IPAddress"
             "SecondaryIPAddresses": null,
             "IPAddress": "172.17.0.3",
                     "IPAddress": "172.17.0.3",
+
+```
+
+Run from Docker hub
+
+```bash
+➜  url-shortener git:(main) ✗ podman run -p 8000:8080 itsshashank/url-shortener:latest
+[GIN] 2022/08/12 - 23:23:40 | 200 |     153.062µs |      10.0.2.100 | GET      "/"
 
 ```
