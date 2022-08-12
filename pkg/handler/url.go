@@ -24,5 +24,10 @@ func GenerateShortUrl(longurl string) (string, error) {
 		}
 	}
 	shorturl := uuid.New().String()[:4] + base64.StdEncoding.EncodeToString([]byte(u.Host))[:3]
+	db.SaveUrlMapping(index, db.Data{ShortUrl: shorturl, LongUrl: longurl})
 	return shorturl, nil
+}
+
+func GetShortUrl(code string) (db.Data, bool) {
+	return db.RetrieveInitialUrl(code)
 }
