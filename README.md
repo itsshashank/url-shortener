@@ -42,3 +42,28 @@ The response:
 ```json
 {"ShortUrl":"localhost:8080/a3ebZ2l","longUrl":"https://github.com"}
 ```
+
+## How to Run in Docker
+
+Build Docker from file
+
+```bash
+docker build -f hack/Dockerfile . -t urlshort
+```
+
+Run 
+```bash
+docker run -p 8000:8080 urlshort
+```
+
+Can access on localhost:8000 or at containerip:8080
+```bash
+docker inspect 480cf1308d0d | grep "IPAddress"
+```
+```bash
+➜  url-shortener git:(main) ✗ docker inspect c2499030d285 | grep "IPAddress"
+            "SecondaryIPAddresses": null,
+            "IPAddress": "172.17.0.3",
+                    "IPAddress": "172.17.0.3",
+
+```
